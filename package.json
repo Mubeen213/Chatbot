@@ -1,0 +1,17 @@
+{
+  "name": "referral",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-Mubeen213:Mubeen213/Chatbot.git"
+  },
+  "author": "Mubeen",
+  "license": "ISC"
+}
