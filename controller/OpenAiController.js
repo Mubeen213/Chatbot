@@ -13,7 +13,7 @@ export const getOpenAIResponse = async (req, res) => {
     if (chatID) {
          chat = await Chat.findOne({_id: chatID})
     } else {
-        chat = new Chat({ name: "New Chat", model: model || "gpt-4" });
+        chat = new Chat({ name: "New Chat"});
         await chat.save();
     }
     const completion = await openai.chat.completions.create({
