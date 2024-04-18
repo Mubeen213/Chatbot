@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true,
         required: [true, 'Please provide email'],
         validate: {
             validator: validator.isEmail,
@@ -20,10 +19,6 @@ const userSchema = new mongoose.Schema({
     profileUrl: {
         type: String,
     },
-    accountType: {
-        type: String,
-        enum: [null, 'user', 'organization']
-    },
     organization: {
         type: mongoose.Schema.ObjectId,
         ref: 'Organization',
@@ -31,12 +26,18 @@ const userSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ['active', 'pending', 'blocked']
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
     }
 }, {
     timestamps: true
 })
 
 userSchema.index({email: 1})
+userSchema.index({email: 1, organization: 1}, {unique: true});
 
 const User = mongoose.model('User', userSchema);
 

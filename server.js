@@ -7,10 +7,12 @@ import cookieParser from 'cookie-parser'
 import mongoose from "mongoose";
 import {ErrorHandlerMiddleware} from "./middlewares/ErrorHandlerMiddleware.js";
 
-import openaiRoutes from './routes/OpenAIRequestRoutes.js'
+import openaiRoutes from './routes/OpenAIRequestRoutes.js';
+import authRoutes from './routes/AuthRoutes.js';
 
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
+app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/openai', openaiRoutes)
 
 app.use(ErrorHandlerMiddleware)

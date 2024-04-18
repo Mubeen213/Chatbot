@@ -9,11 +9,11 @@ export const authenticateUser = async (req, res, next) => {
         throw new Unauthenticated('Invalid token')
     }
     try {
-        const {name, userId, role} = isTokenValid({token: token})
-        req.user = {name, userId, role}
+        const {name, email, userId, role} = isTokenValid({token: token})
+        req.user = {name, email, userId, role}
         next()
     } catch (error) {
-        throw new Unauthenticated('Invalid authenticationss' + error)
+        throw new Unauthenticated('Invalid authentication' + error)
     }
 }
 
